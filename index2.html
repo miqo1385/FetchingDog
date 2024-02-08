@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <h1>Button Example</h1>
+    <button onclick="getDogBreed()">My Buttom</button>
+    <div id="dog-breed">Dog Breeds</div>
+
+    <button onclick="getDogFacts()">Facts</button>
+    <div id="dog-facts">Dog Facts</div>
+
+    <button onclick="getDogGroups()">Groups</button>
+    <div id="dog-groups">Dog groups</div>
+</html>
+<script>
+    async function getDogBreed(){
+        const api_endpoint = "https://dogapi.dog/api/v2/breeds";
+        const response = await fetch(api_endpoint);
+        const json_response = await response.json();
+        console.log(json_response.data);
+        const effect_changes = json_response.data;
+
+        
+    
+
+
+        document.getElementById("dog-breed").innerHTML = JSON.stringify(effect_changes);
+        
+
+    }
+
+    async function getDogFacts(){
+
+
+        const api_endpoint = "https://dogapi.dog/api/v2/facts";
+        const response = await fetch(api_endpoint);
+        const json_response = await response.json();
+        console.log(json_response);
+
+        document.getElementById("dog-facts").innerHTML = JSON.stringify(json_response);
+
+    }
+
+    async function getDogGroups(){
+
+
+    const api_endpoint = "https://dogapi.dog/api/v2/groups";
+    const response = await fetch(api_endpoint);
+    const json_response = await response.json();
+    console.log(json_response);
+
+    document.getElementById("dog-groups").innerHTML = JSON.stringify(json_response);
+
+    }
+</script>

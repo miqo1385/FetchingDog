@@ -1,25 +1,9 @@
-
-fetchDogData()
-
-async function fetchDogData(){
-
-    try{
-        const dogBreeds = document.getElementById("dogBreeds").value.toLowerCase();
-        const response = await fetch(`https://dogapi.dog/api/v2/breeds/${dogBreeds}`);
-
+fetch("https://dogapi.dog/api/v2/breeds")
+    .then(response => {
         if(!response.ok){
             throw new Error("could not fetch resource");
         }
-        const data = await response.json();
-        console.log(data)
-
-    }
-    catch(error){
-        console.error(error);
-
-    }
-
-
-
-}
-
+        return response.json();
+    })
+    .then(data => console.log(data.id))
+    .catch(error => console.error(error));
